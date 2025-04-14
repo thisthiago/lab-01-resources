@@ -20,7 +20,7 @@ Ambos os casos utilizam o mesmo banco de dados PostgreSQL como fonte de dados, d
 
 ## Configuração do Ambiente
 
-1. Clone este repositório:
+1. Execute os comandos abaixo:
    ```
     docker network create lab-01-network
 
@@ -34,6 +34,20 @@ Ambos os casos utilizam o mesmo banco de dados PostgreSQL como fonte de dados, d
 
     docker run -d --name postgres --network lab-01-network -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=senhasegura -v C:/postgres-data:/var/lib/postgresql/data -p 5433:5432 postgres:13
     ```
+
+2. Configure o interpretador spark do zeppling
+  ```
+    spark.hadoop.fs.s3a.endpoint                 http://minio:9000
+    spark.hadoop.fs.s3a.access.key               admin
+    spark.hadoop.fs.s3a.secret.key               senhasegura
+    spark.hadoop.fs.s3a.path.style.access        true
+    spark.hadoop.fs.s3a.impl                     org.apache.hadoop.fs.s3a.S3AFileSystem
+    spark.hadoop.fs.s3a.connection.ssl.enabled   false
+    spark.hadoop.fs.s3a.aws.credentials.provider org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
+    spark.hadoop.fs.s3a.credentials.provider     org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
+    spark.hadoop.fs.s3a.impl.disable.cache       true
+    spark.jars.packages                          org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.262
+  ```
 
 ## Caso 1: PySpark DataFrame API
 

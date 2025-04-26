@@ -47,6 +47,7 @@ Ambos os casos utilizam o mesmo banco de dados PostgreSQL como fonte de dados, d
     spark.hadoop.fs.s3a.credentials.provider     org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider
     spark.hadoop.fs.s3a.impl.disable.cache       true
     spark.jars.packages                          org.apache.hadoop:hadoop-aws:3.3.4,com.amazonaws:aws-java-sdk-bundle:1.12.262
+    spark.sql.legacy.timeParserPolicy            LEGACY
   ```
 
 ## Caso 1: PySpark DataFrame API
